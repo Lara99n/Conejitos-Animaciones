@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conejitos</title>
+    <style>
+    body {
+        margin: 0;
+        width: 100%;
+        height: 100vh;
+        display: grid;
+        place-items: center;
+        counter-reset: score; 
+        background: linear-gradient( #9b6c9b 50%, #b7709e 100%) ;
+    }
+
+    .phone {
+        position: relative;
+        width: 300px;
+        height: 600px;
+        border: 8px solid black;
+        border-radius: 40px;
+        background: #CCEFFF;
+        box-shadow: 0 19px 38px rgb(0, 0, 0, 0.30),
+                    0 15px 12px rgb(0, 0, 0, 0.30);
+    }
+
+    .sol {
+        background: yellow;
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+    }
+
+    .layer-1  {
+        position: absolute;
+        z-index: 1;
+        width: 80px;
+        height: 450px;
+        bottom: 0;
+        right: 60px;
+
+        animation-name: layer;
+        animation-duration: 3s;
+        animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+        animation-iteration-count: infinite;
+        animation-iteration-count: pa;
+    }    
+
+   .layer-1 input[type=checkbox] {
+        position: absolute;
+        appearance: none;
+        cursor: pointer;
+        z-index: 1;
+        width: 100%;
+        height: 80px;
+    }
+
+    .layer-1 input[type=checkbox]{
+        
+    }
+
+    .layer-2 {
+        position: absolute;
+        z-index: 2;
+        width: 80px;
+        height: 450px;
+        bottom: 0;
+        left: 60px;
+
+        animation-name: layer;
+        animation-duration: 3s;
+        animation-timing-function:cubic-bezier(0.39, 0.575, 0.565, 1);
+        animation-iteration-count: infinite;
+    }    
+
+     .layer-2 input[type=checkbox]{
+        
+    }
+
+    .layer-3 {
+        position: absolute;
+        border-radius: 15px;
+        z-index: 3;
+        width: 220px;
+        height: 400px;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        bottom: 0;
+       background-color: #1a0d02;
+        background-image:  linear-gradient(135deg, #E8A0BF 25%, transparent 25%), linear-gradient(225deg, #E8A0BF 25%, transparent 25%), linear-gradient(45deg, #937DC2 25%, transparent 25%), linear-gradient(315deg, #937DC2 25%, #C689C6  25%);
+        background-position:  10px 0, 10px 0, 0 0, 0 0;
+        background-size: 20px 20px;
+        background-repeat: repeat;
+    }    
+    .layer-4 {
+        position: absolute;
+        z-index: 4;
+        width: 80px;
+        height: 340px;
+        left: 55px;
+        bottom: 0;
+
+        animation-name: layer;
+        animation-duration: 3s;
+        animation-timing-function:cubic-bezier(0.455, 0.03, 0.515, 0.955);
+        animation-iteration-count: infinite;
+    }    
+
+    .layer-4  input[type=checkbox]{
+            
+    }
+
+    .layer-5 {
+        position: absolute;
+        z-index: 5;
+        border-radius: 15px;
+        width: 200px;
+        height: 290px;
+        margin: 0 auto;
+        left: 0;
+        right: 100px;
+        bottom: 0;
+        background-color: #e5e5f7;
+        background-image: radial-gradient(circle at center center, #E8A0BF, #C689C6), repeating-radial-gradient(circle at center center, #fff, #C689C6, 10px, transparent 20px, transparent 10px);
+        background-blend-mode: multiply;
+        border-bottom-left-radius: 30px;
+    }    
+    .layer-6 {
+        position: absolute;
+        z-index: 6;
+        position: absolute;
+        width: 80px;
+        height: 200px;
+        margin: 0 auto;
+        left: 150px;
+        right: 0;
+        bottom: 0;
+
+        animation-name: layer;
+        animation-duration: 3s;
+        animation-timing-function:cubic-bezier(0.645, 0.045, 0.355, 1);
+        animation-iteration-count: infinite;
+        
+
+    }   
+     
+     .layer-1  input[type=checkbox]{
+        
+    }
+
+    .layer-7 {
+        position: absolute;
+        z-index: 7;
+        border-radius: 15px;
+        width: 150px;
+        height: 150px;
+        margin: 0 auto;
+        left: 150px;
+        right: 0;
+        bottom: 0;
+        background-color: #E8A0BF;
+        background-image:  linear-gradient(30deg, #C689C6 12%, transparent 12.5%, transparent 87%, #C689C6 87.5%, #C689C6), linear-gradient(150deg, #C689C6 12%, transparent 12.5%, transparent 87%, #C689C6 87.5%, #C689C6), linear-gradient(30deg, #E8A0BF 12%, transparent 12.5%, transparent 87%, #E8A0BF 87.5%, #E8A0BF), linear-gradient(150deg, #E8A0BF 12%, transparent 12.5%, transparent 87%, #E8A0BF 87.5%, #E8A0BF), linear-gradient(60deg, #C689C6 25%, transparent 25.5%, transparent 75%, #C689C6 75%, #C689C6), linear-gradient(60deg, #C689C6 25%, transparent 25.5%, transparent 75%, #C689C6 75%, #C689C6);
+        background-size: 20px 35px;
+        background-position: 0 0, 0 0, 10px 18px, 10px 18px, 0 0, 10px 18px;
+       border-bottom-right-radius: 20% ;
+    }    
+
+
+    .left-ear--outer {
+        background: white;
+        border-radius: 50%;
+        border-top-right-radius: 40%;
+        width: 20px;
+        height: 50px;   
+        position: absolute;
+        left: 10px;
+     
+    }
+    .left-ear--inner {
+        background: rgb(245, 158, 226);
+        border-radius: 90%;
+        width: 10px;
+        height: 50px;   
+        position: absolute;
+        left: 15px;
+        top: 8px;
+
+    }
+    .right-ear--outer {
+        background: white;
+        border-radius: 90%;
+        width: 20px;
+        height: 50px;   
+        position: absolute;
+        right: 10px;
+     
+    }
+    .right-ear--inner {
+        background: rgb(245, 158, 226);
+        border-radius: 90%;
+        width: 10px;
+        height: 50px;   
+        position: absolute;
+        right: 15px;
+        top: 8px;
+    }
+    .head {
+        background: white;
+        border-radius: 50%;
+        width: 100%;
+        height: 80px;
+        top: 30px;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        position: absolute;
+    }
+
+    .head__eye{
+        background: black;
+        border-radius: 50%;
+        width: 4px;
+        height: 4px;
+        position: absolute;
+        top: 15px;
+        animation-name: blink;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+    }
+
+    @keyframes blink {
+        0% {
+            height: 4px;
+        }
+        5% {
+            transform: translate(0px , 2px);
+            height: 1px;
+        }
+        10% {
+         transform: translate(0px , 0px);
+            height: 4px;
+        }
+    }
+
+    .head__eye--left {
+        left: 30px;
+    }
+
+    .head__eye--right {
+        right: 30px
+    }
+
+    
+    @keyframes layer {
+        0% {
+           bottom: 0; 
+        }
+        25% {
+            bottom: -80px;
+        }
+        
+        100% {
+            bottom: 0;
+        }
+    }
+
+    input[type=checkbox] {
+        appearance: none;
+        cursor: pointer;
+        height: 50px;
+        margin: 0;
+        position: relative;
+        top: 0;
+        width: 80px;
+        z-index: 2;
+    }
+
+    input[type=checkbox]:focus {
+        appearance: none;
+        outline: none;
+
+    }
+
+    input:checked {
+        counter-increment: score;
+    }
+
+    .score::after {
+        content: counter(score);
+    }
+
+    .img {
+        padding-top: 10px;
+        width: 250px;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .score {
+        text-align: center;
+        font-size: 25px;
+    }
+    
+    </style>
+
+</head>
+<body>
+    <div class="phone"> 
+        <div class="layer-1">   
+            <input type="checkbox" />
+        <!-- 1er conejito -->
+            <div class="left-ear--outer"></div>
+            <div class="left-ear--inner"></div>
+            <div class="right-ear--outer"></div>
+            <div class="right-ear--inner"></div>
+            <div class="head">
+                <div class="head__eye head__eye--left"></div>
+                <div class="head__eye head__eye--right"></div>
+                     
+            </div>
+        </div>
+        <div class="layer-2">
+
+            <!-- 1er conejito -->
+            <div class="left-ear--outer"></div>
+            <div class="left-ear--inner"></div>
+            <div class="right-ear--outer"></div>
+            <div class="right-ear--inner"></div>
+            <div class="head">
+                <div class="head__eye head__eye--left"></div>
+                <div class="head__eye head__eye--right"></div>
+            </div>
+            <input type="checkbox" />
+
+        </div>
+        <div class="layer-3"></div>
+        <div class="layer-4">
+            
+            <!-- 1er conejito -->
+            <div class="left-ear--outer"></div>
+            <div class="left-ear--inner"></div>
+            <div class="right-ear--outer"></div>
+            <div class="right-ear--inner"></div>
+            <div class="head">
+                <div class="head__eye head__eye--left"></div>
+                <div class="head__eye head__eye--right"></div>
+            </div>
+           <input type="checkbox" />
+
+        </div>
+        <div class="layer-5"></div>
+        <div class="layer-6">
+              <!-- 1er conejito -->
+            <div class="left-ear--outer"></div>
+            <div class="left-ear--inner"></div>
+            <div class="right-ear--outer"></div>
+            <div class="right-ear--inner"></div>
+            <div class="head">
+                <div class="head__eye head__eye--left"></div>
+                <div class="head__eye head__eye--right"></div>
+            </div>
+        <input type="checkbox" />
+
+        </div>
+        <div class="layer-7"></div>
+        <div class="layer-8"></div>
+        <div class="layer-9"></div>
+        <div class="layer-10"></div>
+        <img src="animation.png" class="img"/>
+        <h3 class="score">Score: </h3>
+    </div>
+
+</body>
+</html>
